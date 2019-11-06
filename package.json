@@ -1,0 +1,19 @@
+{
+  "name": "digitalorder",
+  "version": "1.0.0",
+  "description": "digital ordering system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/softwarica-github/git-flow-node-server-eslint-Shrawan-git.git"
+  },
+  "author": "Shrawan shakya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/softwarica-github/git-flow-node-server-eslint-Shrawan-git/issues"
+  },
+  "homepage": "https://github.com/softwarica-github/git-flow-node-server-eslint-Shrawan-git#readme"
+}
