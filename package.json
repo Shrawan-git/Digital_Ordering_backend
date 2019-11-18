@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/softwarica-github/git-flow-node-server-eslint-Shrawan-git/issues"
   },
-  "homepage": "https://github.com/softwarica-github/git-flow-node-server-eslint-Shrawan-git#readme"
+  "homepage": "https://github.com/softwarica-github/git-flow-node-server-eslint-Shrawan-git#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
+  }
 }
