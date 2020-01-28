@@ -19,7 +19,7 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
     }, (err) => console.log(err));
 
 app.use('/user', userRouter);
-app.use('upload', uploadRouter);
+app.use('/upload', uploadRouter);
 app.use(auth.verifyUser);
 
 
