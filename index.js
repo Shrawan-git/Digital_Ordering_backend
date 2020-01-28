@@ -11,7 +11,7 @@ const app = express();
 app.options('*', cors());
 app.use(morgan('tiny'));
 app.use(express.json());
-app.use("/public",express.static("./public"));
+app.use(express.static(__dirname+"/public"));
 
 mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
     .then((db) => {
@@ -19,7 +19,7 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
     }, (err) => console.log(err));
 
 app.use('/user', userRouter);
-app.use('/upload', uploadRouter);
+app.use('upload', uploadRouter);
 app.use(auth.verifyUser);
 
 
