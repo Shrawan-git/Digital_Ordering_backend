@@ -49,7 +49,7 @@ router.post('/login', (req, res, next) => {
 
 router.get('/me', auth.verifyUser, (req, res, next) => {
     console.log(req.user.image);
-    res.json({ _id: req.user._id, name: req.user.name, email:req.user.email, image: req.user.image });
+    res.json({ _id: req.user._id, name: req.user.name, email:req.user.email, image: req.user.image, gender:req.user.gender});
 });
 
 router.put('/me', auth.verifyUser, (req, res, next) => {
