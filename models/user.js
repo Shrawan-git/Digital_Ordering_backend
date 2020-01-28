@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
     },
     image: {
         type: String
+    },
+    gender: {
+        type: String,
+        required: true
     }
 });
 
