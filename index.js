@@ -5,6 +5,7 @@ const dotenv = require('dotenv').config();
 const cors = require('cors');
 const userRouter = require('./routes/user');
 const uploadRouter = require('./routes/upload');
+const orderRouter = require('./routes/order');
 const auth = require('./auth');
 
 const app = express();
@@ -17,7 +18,8 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
     .then((db) => {
         console.log("Successfully connected to MongodB server");
     }, (err) => console.log(err));
-
+    
+app.use('/order', orderRouter);
 app.use('/user', userRouter);
 app.use('/upload', uploadRouter);
 app.use(auth.verifyUser);

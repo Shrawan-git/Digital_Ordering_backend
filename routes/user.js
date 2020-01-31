@@ -52,10 +52,49 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
     res.json({ _id: req.user._id, name: req.user.name, email:req.user.email, image: req.user.image, gender:req.user.gender});
 });
 
-router.put('/me', auth.verifyUser, (req, res, next) => {
+router.put('/UserUpdateAndroid', auth.verifyUser, (req, res, next) => {
     User.findByIdAndUpdate(req.user._id, { $set: req.body }, { new: true })
         .then((user) => {
             res.json({ _id: user._id, name: user.name, email: user.email, image: user.image });
         }).catch(next);
 });
+// router.put('/UserUpdateAndroid/:id', function (req, res, next) {
+//     User.update({
+//         name: req.body.name,
+//         email: req.body.email,
+//         gender: req.body.gender
+//     },{
+//         where:{
+//             id: req.params.id
+//         }
+//     }).then(function (result){
+//         if(result === 0){
+//             res.json({
+//                 status : 404,
+//                 message: "User not fuoound"
+
+
+//             })
+//         }else{
+//             res.json({
+//                 status:200,
+//                 message: "User updated"
+//             })
+//         }
+//     }).catch(function(err){
+//         console.log(err)
+//     })
+// })
+//     console.log(req.body);
+//     //var uid = req.body._id;
+//     User.findOne({ name: req.body.name }, req.body)
+//         .then((user) => {
+//     // User.findByIdAndUpdate({ _id: uid }, req.body).then(function () {
+//         console.log("User Profile Updated Successfully");
+//         res.send()
+//         console.log(req.body)
+//     }).catch(function (e) {
+//         console.log("An Error Occured")
+//     })
+// })
 module.exports = router;
