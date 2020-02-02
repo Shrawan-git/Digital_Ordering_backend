@@ -12,7 +12,10 @@ const orderSchema = new mongoose.Schema( {
     },
     foodCategory:{
         type:String
+    },
+    owner:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 });
-
-module.exports = mongoose.model("orders", orderSchema);
+module.exports = mongoose.model("Orders", orderSchema);
