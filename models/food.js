@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const Order = mongoose.model("orders", {
-    foodImageName:{
+const orderSchema = new mongoose.Schema( {
+    image:{
         type:String
     },
     foodName:{
@@ -15,4 +15,4 @@ const Order = mongoose.model("orders", {
     }
 });
 
-module.exports = Order;
+module.exports = mongoose.model("orders", orderSchema);

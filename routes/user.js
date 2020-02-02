@@ -14,6 +14,7 @@ router.post('/signup', (req, res, next) => {
         User.create({
             name: req.body.name,
             email: req.body.email,
+            phone: req.body.phone,
             password: hash,
             image: req.body.image,
             gender: req.body.gender
@@ -49,13 +50,13 @@ router.post('/login', (req, res, next) => {
 
 router.get('/me', auth.verifyUser, (req, res, next) => {
     console.log(req.user.image);
-    res.json({ _id: req.user._id, name: req.user.name, email:req.user.email, image: req.user.image, gender:req.user.gender});
+    res.json({ _id: req.user._id, name: req.user.name, email:req.user.email, phone:req.user.phone, image: req.user.image, gender:req.user.gender});
 });
 
 router.put('/UserUpdateAndroid', auth.verifyUser, (req, res, next) => {
     User.findByIdAndUpdate(req.user._id, { $set: req.body }, { new: true })
         .then((user) => {
-            res.json({ _id: user._id, name: user.name, email: user.email, image: user.image });
+            res.json({ _id: user._id, name: user.name, email: user.email, phone: user.phone, image: user.image });
         }).catch(next);
 });
 // router.put('/UserUpdateAndroid/:id', function (req, res, next) {
