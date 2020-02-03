@@ -4,8 +4,10 @@ const morgan = require('morgan');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
 const userRouter = require('./routes/user');
+const adminRouter = require('./routes/admin');
 const uploadRouter = require('./routes/upload');
 const orderRouter = require('./routes/order');
+const orderedRouter = require('./routes/userorder');
 const auth = require('./auth');
 
 const app = express();
@@ -19,11 +21,12 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
         console.log("Successfully connected to MongodB server");
     }, (err) => console.log(err));
     
-
 app.use('/user', userRouter);
+app.use('/admin', adminRouter);
 app.use('/upload', uploadRouter);
 app.use(auth.verifyUser);
 app.use('/order', orderRouter);
+app.use('/userorder', orderedRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

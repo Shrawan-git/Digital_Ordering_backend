@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema( {
-    image:{
-        type:String
-    },
     foodName:{
         type:String
     },
@@ -15,7 +12,7 @@ const orderSchema = new mongoose.Schema( {
     },
     owner:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Admin"
+        ref: "User"
     }
 });
-module.exports = mongoose.model("Orders", orderSchema);
+module.exports = mongoose.model("OrdersList", orderSchema);

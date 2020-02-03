@@ -1,10 +1,21 @@
 const express = require('express');
 const Order = require("../models/order");
+const auth = require('../auth');
 const router = express.Router();
-router.route("/")
+
+router.route("/", auth.verifyAdmin)
+.get((req, res, next) => {
+    Order.find()
+        .then((order) => {
+            console.log(order);
+            res.json(order);
+        })
+        .catch((err) => {
+            next(err)
+        })
+    })
     .post((req, res, next) => {
         let order = new Order(req.body);
-        order.owner = req.user._id;
         console.log(order);
         order.save()
             .then((order) => {
