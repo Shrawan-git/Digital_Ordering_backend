@@ -12,8 +12,9 @@ router.route("/", auth.verifyAdmin)
         })
         .catch((err) => {
             next(err)
-        })
+        });
     })
+
     .post((req, res, next) => {
         let order = new Order(req.body);
         console.log(order);
@@ -23,4 +24,18 @@ router.route("/", auth.verifyAdmin)
                 res.json(order);
             }).catch(next)
     })
+    
+        router.route("/:foodCategory")
+        .get((req,res,next)=>{
+            Order.find({foodCategory: req.params.foodCategory})
+            .then((orders)=>{
+                console.log(orders);
+                res.json(orders);
+            })
+            .catch((err)=>{
+                next(err)
+            });
+        })
+ 
+    
 module.exports = router;
