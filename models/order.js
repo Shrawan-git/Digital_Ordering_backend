@@ -13,6 +13,9 @@ const orderSchema = new mongoose.Schema( {
     foodCategory:{
         type:String
     },
+    foodDescription:{
+        type:String
+    },
     owner:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Admin"
