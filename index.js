@@ -9,6 +9,7 @@ const uploadRouter = require('./routes/upload');
 const orderRouter = require('./routes/order');
 const orderedRouter = require('./routes/userorder');
 const ratingRouter = require('./routes/rating');
+const favouriteRouter = require('./routes/favourite');
 const auth = require('./auth');
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(auth.verifyUser);
 app.use('/order', orderRouter);
 app.use('/userorder', orderedRouter);
 app.use('/rating', ratingRouter);
+app.use('/favourite', favouriteRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
