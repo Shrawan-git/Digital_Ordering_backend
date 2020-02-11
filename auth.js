@@ -23,8 +23,9 @@ module.exports.verifyUser = (req, res, next) => {
         })
 }
 module.exports.verifyAdmin = (req, res, next) => {
-    console.log(req.headers);
+    // console.log(req.headers);
     let authHeader = req.headers.authorization;
+    console.log(authHeader);
     if (!authHeader) {
         let err = new Error("Bearer token is not set!");
         err.status = 401;
