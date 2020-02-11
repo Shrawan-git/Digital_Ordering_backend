@@ -13,7 +13,7 @@ const favouriteRouter = require('./routes/favourite');
 const auth = require('./auth');
 
 const app = express();
-app.options('*', cors());
+app.use(cors());
 app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.static(__dirname+"/public"));
