@@ -58,4 +58,15 @@ router.route("/userlist")
     })
 })
 
+router.route("/:id")
+.delete((req, res, next) => {
+    console.log(req.body);
+    User.findOneAndDelete({ _id: req.params.id })
+    .then((user) => {
+        if(user == null) throw new Error("User not found");
+        res.json(user)
+    }).catch(next);
+
+})
+
 module.exports = router;

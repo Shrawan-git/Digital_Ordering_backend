@@ -36,6 +36,17 @@ router.route("/", auth.verifyAdmin)
                 next(err)
             });
         })
+
+        router.route("/:id")
+.delete((req, res, next) => {
+    console.log(req.body);
+    Order.findOneAndDelete({ _id: req.params.id })
+    .then((user) => {
+        if(user == null) throw new Error("Product not found");
+        res.json(user)
+    }).catch(next);
+
+})
  
     
 module.exports = router;
