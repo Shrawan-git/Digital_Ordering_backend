@@ -14,4 +14,27 @@ router.route("/")
     }).catch(next);
 })
 
+
+.get((req, res, next) => {
+    Rating.find()
+        .then((rating) => {
+            console.log(rating);
+            res.json(rating);
+        })
+        .catch((err) => {
+            next(err)
+        });
+    })
+
+    router.route("/:id")
+    .delete((req, res, next) => {
+        console.log(req.body);
+        Rating.findOneAndDelete({ _id: req.params.id })
+        .then((rating) => {
+            if(rating == null) throw new Error("Product not found");
+            res.json(rating)
+        }).catch(next);
+    
+    })
+
 module.exports = router;

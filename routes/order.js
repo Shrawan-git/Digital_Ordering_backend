@@ -37,7 +37,7 @@ router.route("/", auth.verifyAdmin)
             });
         })
 
-        router.route("/:id")
+  router.route("/:id")
 .delete((req, res, next) => {
     console.log(req.body);
     Order.findOneAndDelete({ _id: req.params.id })
@@ -45,8 +45,17 @@ router.route("/", auth.verifyAdmin)
         if(user == null) throw new Error("Product not found");
         res.json(user)
     }).catch(next);
-
 })
+
+.put((req,res,next) => {
+    console.log(req.body);
+    Order.findOneAndUpdate({ _id: req.params.id}, {$set: req.body}, {new:true})
+        .then((user)=> {
+            if(user == null) throw new Error("Product not found");
+            res.json(user)
+        }).catch(next)
+    });
  
+
     
 module.exports = router;
