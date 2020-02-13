@@ -26,8 +26,9 @@ router.route("/")
         });
     })
 
+    router.route("/:foodName")
     .delete((req,res,next) => {
-        Userorder.findOneAndDelete({ owner: req.user._id})
+        Userorder.findOneAndDelete({ owner: req.user._id, foodName:req.params.foodName})
         .then((userorder) => {
             if( userorder == null) throw new Error("Product not found");
             res.json(userorder);

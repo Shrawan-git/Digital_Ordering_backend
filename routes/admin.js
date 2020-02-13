@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Admin = require('../models/admin');
+const User = require('../models/user');
 const router = express.Router();
 const auth = require('../auth');
 
@@ -44,4 +45,17 @@ router.post('/loginadmin', (req, res, next) => {
             }
         }).catch(next);
 })
+
+router.route("/userlist")
+.get(auth.verifyAdmin, (req,res,next) => {
+    User.find()
+    .then((user) => {
+        console.log(user);
+        res.json(user);
+    })
+    .catch((err) => {
+        next(err);
+    })
+})
+
 module.exports = router;
