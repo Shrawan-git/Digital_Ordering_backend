@@ -25,4 +25,13 @@ router.route("/")
             next(err)
         });
     })
+
+    router.route("/:foodName")
+    .delete((req,res,next) => {
+        Favourite.findOneAndDelete({ owner: req.user._id, foodName:req.params.foodName})
+        .then((favourite) => {
+            if( favourite == null) throw new Error("Product not found");
+            res.json(favourite);
+        })
+    })
 module.exports = router;
