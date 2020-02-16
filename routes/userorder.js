@@ -34,4 +34,16 @@ router.route("/")
             res.json(userorder);
         })
     })
+
+    router.route("/list", auth.verifyAdmin)
+    .get((req,res,next)=>{
+        Userorder.find()
+        .then((foodorder)=>{
+            console.log(foodorder);
+            res.json(foodorder)
+        })
+        .catch((err)=>{
+            next(err)
+        })
+    })
 module.exports = router;
